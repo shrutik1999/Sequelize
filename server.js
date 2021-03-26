@@ -6,10 +6,12 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+const staticFolder = 'public'; //created staticFolder constant
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(staticFolder));
+app.use(express.static(staticFolder)); //copied from course repo
 
 app.use('/api', apiRoutes);
 
