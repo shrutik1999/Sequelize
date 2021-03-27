@@ -6,7 +6,7 @@ async function windowActions() {
   const json = await request.json();
   const hallarray = json["data"];
 
-  /* copied code from old lab */
+  /* set a constant, html, equal will take the array from the data and insert into tbody */
   const html = hallarray.map(place => {
     return `
         <tr>
@@ -18,4 +18,4 @@ async function windowActions() {
   diningdata.innerHTML = html;
 }
 
-window.onload = windowActions;
+window.onload = windowActions; /* calls windowActions as soon as page loads */
