@@ -1,13 +1,19 @@
-const diningdata = document.querySelector('.hallinfo');
+//const wholeMealData = document.querySelector('.wholeMealInfo');
+
+async function getWholeMeals() {
+  const endpoint = '/api/wholeMeal'; //changed endpoint name
+  const request = await fetch(endpoint); //changed from endpoint
+  const json = await request.json(); //changed json to jsonmeals
+  //const mealsarray = json["data"];
+  return json;
+}
 
 async function windowActions() {
-  const endpoint = '/api/dining';
-  const request = await fetch(endpoint);
-  const json = await request.json();
-  const hallarray = json["data"];
-
   /* set a constant, html, equal will take the array from the data and insert into tbody */
-  const html = hallarray.map(place => {
+  console.log('loaded window');
+  const meals = await getWholeMeals();
+  console.table(meals);
+  /*const html = mealsarray.map(place => {
     return `
         <tr>
             <td class="hallid">${place.hall_id}</td>
@@ -15,7 +21,7 @@ async function windowActions() {
             <td class="halladdress">${place.hall_address}</td>
         </tr>
     `;}).join('');
-  diningdata.innerHTML = html;
+    wholeMealData.innerHTML = html;*/
 }
 
 window.onload = windowActions; /* calls windowActions as soon as page loads */
